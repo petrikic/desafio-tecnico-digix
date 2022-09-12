@@ -37,23 +37,18 @@ public class Familia {
 	public Double rendaDoConjuge() {
 		return conjuge != null ? conjuge.getRenda() : 0d;
 	}
+
 	
 	public double rendaDosDependentes() {
-		double rendaAcumulada = 0;
-		for(Pessoa dependente : dependentes) {
-			rendaAcumulada += dependente.getRenda();
-		}
-		
-		return rendaAcumulada;
+		return dependentes.stream()
+				.map(dependente -> dependente.getRenda())
+				.reduce(0d, Double::sum);
 	}
 	
 	public int numeroDeDependentesMenores() {
-		int quantidadeDependentesMenores = 0;
-		for(Pessoa dependente : dependentes) {
-			if(dependente.isMenorDeIdade())
-				quantidadeDependentesMenores++;
-		}
-		
-		return quantidadeDependentesMenores;
+		return dependentes.stream()
+				.filter(dependente -> dependente.isMenorDeIdade())
+				.toList()
+				.size();
 	}
 }

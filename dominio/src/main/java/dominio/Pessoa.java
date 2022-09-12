@@ -2,7 +2,6 @@ package dominio;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.ZoneId;
 import java.util.Date;
 
 public class Pessoa {
@@ -41,7 +40,7 @@ public class Pessoa {
 	}
 	
 	public int idade() {
-		LocalDate dataNascimentoLocalDate = dataNascimento.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		LocalDate dataNascimentoLocalDate = DateUtils.converterParaLocalDate(dataNascimento);
 		return Period.between(dataNascimentoLocalDate, LocalDate.now()).getYears();
 	}
 	
