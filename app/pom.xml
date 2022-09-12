@@ -6,4 +6,11 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>app</artifactId>
+  <dependencies>
+  	<dependency>
+  		<groupId>digix</groupId>
+  		<artifactId>dominio</artifactId>
+  		<version>${project.parent.version}</version>
+  	</dependency>
+  </dependencies>
 </project>
