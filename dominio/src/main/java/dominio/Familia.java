@@ -62,12 +62,13 @@ public class Familia implements Comparable<Familia>{
 				.size();
 	}
 	
-	public void calculaPontuacao(ICalculadorDePontuacao calculador) {
+	public Familia calculaPontuacao(ICalculadorDePontuacao calculador) {
 		this.pontuacao = calculador.calcula(this);
+		return this;
 	}
 
 	@Override
 	public int compareTo(Familia outraFamilia) {
-		return Integer.compare(getPontuacao(), outraFamilia.getPontuacao());
+		return Integer.compare(outraFamilia.getPontuacao(), getPontuacao());
 	}
 }
