@@ -2,16 +2,22 @@ package dominio;
 
 import java.util.List;
 
-public class Familia {
+public class Familia implements Comparable<Familia>{
 	
 	private Pessoa pretendente;
 	private Pessoa conjuge;
 	private List<Pessoa> dependentes;
+	private int pontuacao;
 	
 	public Familia(Pessoa pretendente, Pessoa conjuge, List<Pessoa> dependentes) {
 		this.pretendente = pretendente;
 		this.conjuge = conjuge;
 		this.dependentes = dependentes;
+		this.pontuacao = 0;
+	}
+	
+	public Familia(Pessoa pretendente, List<Pessoa> dependentes) {
+		this(pretendente, null, dependentes);
 	}
 	
 	public Pessoa getPretendente() {
@@ -24,6 +30,10 @@ public class Familia {
 	
 	public List<Pessoa> getDependentes() {
 		return this.dependentes;
+	}
+	
+	public int getPontuacao() {
+		return this.pontuacao;
 	}
 	
 	public double rendaFamiliar() {
@@ -50,5 +60,14 @@ public class Familia {
 				.filter(dependente -> dependente.isMenorDeIdade())
 				.toList()
 				.size();
+	}
+	
+	public void calculaPontuacao(ICalculadorDePontuacao calculador) {
+		this.pontuacao = calculador.calcula(this);
+	}
+
+	@Override
+	public int compareTo(Familia outraFamilia) {
+		return Integer.compare(getPontuacao(), outraFamilia.getPontuacao());
 	}
 }

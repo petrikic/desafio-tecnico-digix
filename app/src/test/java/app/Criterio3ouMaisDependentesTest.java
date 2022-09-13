@@ -28,24 +28,20 @@ class Criterio3ouMaisDependentesTest {
 
 	@Test
 	public void testaFamiliaCom1Dependente() {
-		List<Pessoa> solicitantes = Arrays.asList(
-				Pessoa.cria("Fulano de Souza", "12345678921", 1500, LocalDate.of(1988, 01, 01))
-			);
-		
+		Pessoa pretendente = Pessoa.cria("Fulano de Souza", "12345678921", 1500, LocalDate.of(1988, 01, 01));
+
 		List<Pessoa> dependentes = Arrays.asList(
 				Pessoa.cria("Ciclaninho de Souza", "12345678921", 0, LocalDate.of(2013, 07, 14))
 			);
 		
-		Familia familia = new Familia(solicitantes, dependentes);
+		Familia familia = new Familia(pretendente, dependentes);
 		
 		assertFalse(criterio.isValido(familia), "Familia com 1 dependente deveria ser inválida para critério.");
 	}
 	
 	@Test
 	public void testaFamiliaCom5Dependentes() {
-		List<Pessoa> solicitantes = Arrays.asList(
-				Pessoa.cria("Fulano de Souza", "12345678921", 2000, LocalDate.of(1988, 01, 01))
-			);
+		Pessoa pretendente = Pessoa.cria("Fulano de Souza", "12345678921", 2000, LocalDate.of(1988, 01, 01));
 		
 		List<Pessoa> dependentes = Arrays.asList(
 				Pessoa.cria("Fulaninha de Souza", "12345678921", 0, LocalDate.of(2017, 03, 03)),
@@ -55,7 +51,7 @@ class Criterio3ouMaisDependentesTest {
 				Pessoa.cria("Beltraninha da Silva", "12345678921", 0, LocalDate.of(2017, 06, 05))
 			);
 		
-		Familia familia = new Familia(solicitantes, dependentes);
+		Familia familia = new Familia(pretendente, dependentes);
 		
 		assertTrue(criterio.isValido(familia), "Familia com 5 dependentes deveria ser válida para critério.");
 	}

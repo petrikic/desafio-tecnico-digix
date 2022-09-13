@@ -13,7 +13,7 @@ import dominio.Pessoa;
 
 class Criterio1ou2DependentesTest {
 
-private ICriterioAvaliacao criterio;
+	private ICriterioAvaliacao criterio;
 	
 	@BeforeEach
 	private void prepara() {
@@ -27,25 +27,21 @@ private ICriterioAvaliacao criterio;
 
 	@Test
 	public void testaFamiliaCom2Dependentes() {
-		List<Pessoa> solicitantes = Arrays.asList(
-				Pessoa.cria("Fulano de Souza", "12345678921", 1500, LocalDate.of(1988, 01, 01))
-			);
+		Pessoa pretendente = Pessoa.cria("Fulano de Souza", "12345678921", 1500, LocalDate.of(1988, 01, 01));
 		
 		List<Pessoa> dependentes = Arrays.asList(
 				Pessoa.cria("Ciclaninho de Souza", "12345678921", 0, LocalDate.of(2013, 07, 14)),
 				Pessoa.cria("Beltraninho da Silva", "12345678921", 0, LocalDate.of(2019, 11, 25))
 			);
 		
-		Familia familia = new Familia(solicitantes, dependentes);
+		Familia familia = new Familia(pretendente, dependentes);
 		
 		assertTrue(criterio.isValido(familia), "Familia com 2 dependentes deveria ser válida para critério.");
 	}
 	
 	@Test
 	public void testaFamiliaCom3Dependentes() {
-		List<Pessoa> solicitantes = Arrays.asList(
-				Pessoa.cria("Fulano de Souza", "12345678921", 2000, LocalDate.of(1988, 01, 01))
-			);
+		Pessoa pretendente = Pessoa.cria("Fulano de Souza", "12345678921", 2000, LocalDate.of(1988, 01, 01));
 		
 		List<Pessoa> dependentes = Arrays.asList(
 				Pessoa.cria("Fulaninha de Souza", "12345678921", 0, LocalDate.of(2017, 03, 03)),
@@ -53,7 +49,7 @@ private ICriterioAvaliacao criterio;
 				Pessoa.cria("Beltraninho da Silva", "12345678921", 0, LocalDate.of(2019, 11, 25))
 			);
 		
-		Familia familia = new Familia(solicitantes, dependentes);
+		Familia familia = new Familia(pretendente, null, dependentes);
 		
 		assertFalse(criterio.isValido(familia), "Familia com 3 dependentes deveria ser válida para critério.");
 	}
