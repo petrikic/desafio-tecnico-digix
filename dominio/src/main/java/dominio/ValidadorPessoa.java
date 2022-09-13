@@ -1,6 +1,6 @@
 package dominio;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class ValidadorPessoa {
 	
@@ -16,7 +16,7 @@ public class ValidadorPessoa {
 		ValidadorPessoa.validador = validador;
 	}
 	
-	public static void valida(String nome, String cpf, double renda, Date dataNascimento) {
+	public static void valida(String nome, String cpf, double renda, LocalDate dataNascimento) {
 		getInstancia().validaNome(nome);
 		getInstancia().validaCpf(cpf);
 		getInstancia().validaRenda(renda);

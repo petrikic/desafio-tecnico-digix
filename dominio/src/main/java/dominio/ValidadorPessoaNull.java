@@ -1,6 +1,6 @@
 package dominio;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class ValidadorPessoaNull implements IValidadorPessoa{
 
@@ -14,6 +14,6 @@ public class ValidadorPessoaNull implements IValidadorPessoa{
 	public void validaRenda(double renda) {}
 
 	@Override
-	public void validaDataNascimento(Date dataNascimento) {}
+	public void validaDataNascimento(LocalDate dataNascimento) {}
 
 }

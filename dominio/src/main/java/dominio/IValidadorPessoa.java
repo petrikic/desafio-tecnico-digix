@@ -1,6 +1,6 @@
 package dominio;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public interface IValidadorPessoa {
 	
@@ -10,6 +10,6 @@ public interface IValidadorPessoa {
 	
 	public void validaRenda(double renda);
 	
-	public void validaDataNascimento(Date dataNascimento);
+	public void validaDataNascimento(LocalDate dataNascimento);
 
 }

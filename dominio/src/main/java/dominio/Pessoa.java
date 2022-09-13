@@ -2,23 +2,22 @@ package dominio;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.Date;
 
 public class Pessoa {
 	
 	private String nome;
 	private String cpf;
 	private double renda;
-	private Date dataNascimento;
+	private LocalDate dataNascimento;
 	
-	private Pessoa(String nome, String cpf, double renda, Date dataNascimento) {
+	private Pessoa(String nome, String cpf, double renda, LocalDate dataNascimento) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.renda = renda;
 		this.dataNascimento = dataNascimento;
 	}
 	
-	public static Pessoa cria(String nome, String cpf, double renda, Date dataNascimento) {
+	public static Pessoa cria(String nome, String cpf, double renda, LocalDate dataNascimento) {
 		ValidadorPessoa.valida(nome, cpf, renda, dataNascimento);
 		return new Pessoa(nome, cpf, renda, dataNascimento);
 	}
@@ -35,13 +34,12 @@ public class Pessoa {
 		return this.renda;
 	}
 	
-	public Date getDataNascimento() {
+	public LocalDate getDataNascimento() {
 		return this.dataNascimento;
 	}
 	
 	public int idade() {
-		LocalDate dataNascimentoLocalDate = DateUtils.converterParaLocalDate(dataNascimento);
-		return Period.between(dataNascimentoLocalDate, LocalDate.now()).getYears();
+		return Period.between(dataNascimento, LocalDate.now()).getYears();
 	}
 	
 	public boolean isMenorDeIdade() {
